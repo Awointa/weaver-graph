@@ -1,0 +1,46 @@
+specVersion: v0.1.0
+package:
+  name: weaver
+  version: v0.1.0
+
+imports:
+  starknet: https://spkg.io/streamingfast/starknet-foundational-v0.1.4.spkg
+
+protobuf:
+  files:
+    - events.proto
+  importPaths:
+    - ./proto
+
+  excludePaths:
+    - sf/substreams/index
+    - sf/substreams/rpc
+    - sf/substreams/sink
+    - sf/substreams/v1
+    - google
+
+binaries:
+  default:
+    type: wasm/rust-v1+wasm-bindgen-shims
+    file: ./target/wasm32-unknown-unknown/release/substreams.wasm
+
+modules:
+- name: map_weaver_events
+  kind: map
+  initialBlock: 714301
+  inputs:
+    - map: starknet:filtered_transactions
+  output:
+   type: proto:starknet.v1.Events
+- name: map_protocols_events
+  kind: map
+  initialBlock: 714310
+  inputs:
+    - map: starknet:filtered_transactions
+  output:
+   type: proto:starknet.v1.Events
+
+network: starknet-testnet
+
+params:
+  starknet:filtered_transactions: ev:from_address:0x000a6ab43cb891ee68a350dbfd2a972bab0379701c6fc115802284dad4d22dea || ev:from_address:0x02d916e6f8d8e2dc8d3c9a8a6f25f5f72b280ed25fdaf18e09116800c608e26e
