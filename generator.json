@@ -1,0 +1,865 @@
+{
+  "generator": "starknet-events-beta",
+  "state": {
+    "name": "weaver",
+    "chainName": "starknet-testnet",
+    "contracts": [
+      {
+        "name": "weaver",
+        "address": "0x000a6ab43cb891ee68a350dbfd2a972bab0379701c6fc115802284dad4d22dea",
+        "initialBlock": 714301,
+        "aliases": [],
+        "rawAbi": [
+          {
+            "type": "impl",
+            "name": "WeaverImpl",
+            "interface_name": "weaver_contract::mods::interfaces::IWeaver::IWeaver"
+          },
+          {
+            "type": "struct",
+            "name": "core::byte_array::ByteArray",
+            "members": [
+              {
+                "name": "data",
+                "type": "core::array::Array::\u003ccore::bytes_31::bytes31\u003e"
+              },
+              {
+                "name": "pending_word",
+                "type": "core::felt252"
+              },
+              {
+                "name": "pending_word_len",
+                "type": "core::integer::u32"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "core::bool",
+            "variants": [
+              {
+                "name": "False",
+                "type": "()"
+              },
+              {
+                "name": "True",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "core::integer::u256",
+            "members": [
+              {
+                "name": "low",
+                "type": "core::integer::u128"
+              },
+              {
+                "name": "high",
+                "type": "core::integer::u128"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "weaver_contract::mods::types::User",
+            "members": [
+              {
+                "name": "Details",
+                "type": "core::byte_array::ByteArray"
+              },
+              {
+                "name": "registered",
+                "type": "core::bool"
+              },
+              {
+                "name": "user_id",
+                "type": "core::integer::u256"
+              },
+              {
+                "name": "user_owner",
+                "type": "core::starknet::contract_address::ContractAddress"
+              }
+            ]
+          },
+          {
+            "type": "interface",
+            "name": "weaver_contract::mods::interfaces::IWeaver::IWeaver",
+            "items": [
+              {
+                "type": "function",
+                "name": "register_User",
+                "inputs": [
+                  {
+                    "name": "Details",
+                    "type": "core::byte_array::ByteArray"
+                  }
+                ],
+                "outputs": [],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "get_register_user",
+                "inputs": [
+                  {
+                    "name": "address",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "weaver_contract::mods::types::User"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_owner",
+                "inputs": [],
+                "outputs": [
+                  {
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "set_erc721",
+                "inputs": [
+                  {
+                    "name": "address",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "outputs": [],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "get_user_id",
+                "inputs": [],
+                "outputs": [
+                  {
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_erc721",
+                "inputs": [],
+                "outputs": [
+                  {
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "state_mutability": "view"
+              }
+            ]
+          },
+          {
+            "type": "constructor",
+            "name": "constructor",
+            "inputs": [
+              {
+                "name": "owner",
+                "type": "core::starknet::contract_address::ContractAddress"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::events::Upgraded",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "implementation",
+                "type": "core::starknet::class_hash::ClassHash",
+                "kind": "key"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "weaver_contract::mods::events::UserEventType",
+            "variants": [
+              {
+                "name": "Register",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::events::UserRegistered",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "user_id",
+                "type": "core::integer::u256",
+                "kind": "key"
+              },
+              {
+                "name": "user",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "key"
+              },
+              {
+                "name": "event_type",
+                "type": "weaver_contract::mods::events::UserEventType",
+                "kind": "key"
+              },
+              {
+                "name": "block_timestamp",
+                "type": "core::integer::u64",
+                "kind": "data"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::weaver_contract::weaver::Weaver::Event",
+            "kind": "enum",
+            "variants": [
+              {
+                "name": "Upgraded",
+                "type": "weaver_contract::mods::events::Upgraded",
+                "kind": "nested"
+              },
+              {
+                "name": "UserRegistered",
+                "type": "weaver_contract::mods::events::UserRegistered",
+                "kind": "nested"
+              }
+            ]
+          }
+        ],
+        "Abi": {}
+      },
+      {
+        "name": "protocols",
+        "address": "0x02d916e6f8d8e2dc8d3c9a8a6f25f5f72b280ed25fdaf18e09116800c608e26e",
+        "initialBlock": 714310,
+        "aliases": [
+          {
+            "OldName": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::Event",
+            "NewName": "ProtocolCampaignEvent"
+          },
+          {
+            "OldName": "openzeppelin_access::ownable::ownable::OwnableComponent::Event",
+            "NewName": "OwnableComponentEvent"
+          }
+        ],
+        "rawAbi": [
+          {
+            "type": "impl",
+            "name": "ProtocolImpl",
+            "interface_name": "weaver_contract::mods::interfaces::Iprotocol::IProtocol"
+          },
+          {
+            "type": "struct",
+            "name": "core::integer::u256",
+            "members": [
+              {
+                "name": "low",
+                "type": "core::integer::u128"
+              },
+              {
+                "name": "high",
+                "type": "core::integer::u128"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "core::byte_array::ByteArray",
+            "members": [
+              {
+                "name": "data",
+                "type": "core::array::Array::\u003ccore::bytes_31::bytes31\u003e"
+              },
+              {
+                "name": "pending_word",
+                "type": "core::felt252"
+              },
+              {
+                "name": "pending_word_len",
+                "type": "core::integer::u32"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "core::bool",
+            "variants": [
+              {
+                "name": "False",
+                "type": "()"
+              },
+              {
+                "name": "True",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "weaver_contract::mods::types::ProtocolInfo",
+            "members": [
+              {
+                "name": "protocol_Details",
+                "type": "core::byte_array::ByteArray"
+              },
+              {
+                "name": "registered",
+                "type": "core::bool"
+              },
+              {
+                "name": "verified",
+                "type": "core::bool"
+              },
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256"
+              },
+              {
+                "name": "protocol_owner",
+                "type": "core::starknet::contract_address::ContractAddress"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "core::option::Option::\u003cweaver_contract::mods::types::ProtocolInfo\u003e",
+            "variants": [
+              {
+                "name": "Some",
+                "type": "weaver_contract::mods::types::ProtocolInfo"
+              },
+              {
+                "name": "None",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "weaver_contract::mods::types::ProtocolDetails",
+            "members": [
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256"
+              },
+              {
+                "name": "protocol_owner",
+                "type": "core::starknet::contract_address::ContractAddress"
+              },
+              {
+                "name": "protocol_matadata_uri",
+                "type": "core::byte_array::ByteArray"
+              },
+              {
+                "name": "protocol_nft_address",
+                "type": "core::starknet::contract_address::ContractAddress"
+              },
+              {
+                "name": "protocol_details",
+                "type": "core::option::Option::\u003cweaver_contract::mods::types::ProtocolInfo\u003e"
+              },
+              {
+                "name": "protocol_campaign_members",
+                "type": "core::integer::u256"
+              },
+              {
+                "name": "protocol_info",
+                "type": "core::byte_array::ByteArray"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "core::option::Option::\u003cweaver_contract::mods::types::ProtocolDetails\u003e",
+            "variants": [
+              {
+                "name": "Some",
+                "type": "weaver_contract::mods::types::ProtocolDetails"
+              },
+              {
+                "name": "None",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "struct",
+            "name": "weaver_contract::mods::types::CampaignMembers",
+            "members": [
+              {
+                "name": "user_address",
+                "type": "core::starknet::contract_address::ContractAddress"
+              },
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256"
+              },
+              {
+                "name": "campaign_details",
+                "type": "core::option::Option::\u003cweaver_contract::mods::types::ProtocolDetails\u003e"
+              },
+              {
+                "name": "protocol_token_id",
+                "type": "core::integer::u256"
+              }
+            ]
+          },
+          {
+            "type": "interface",
+            "name": "weaver_contract::mods::interfaces::Iprotocol::IProtocol",
+            "items": [
+              {
+                "type": "function",
+                "name": "create_protocol_campaign",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  },
+                  {
+                    "name": "protocol_info",
+                    "type": "core::byte_array::ByteArray"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "join_protocol_campaign",
+                "inputs": [
+                  {
+                    "name": "campaign_user",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  },
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "outputs": [],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "set_protocol_matadata_uri",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  },
+                  {
+                    "name": "matadata_uri",
+                    "type": "core::byte_array::ByteArray"
+                  }
+                ],
+                "outputs": [],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "protocol_register",
+                "inputs": [
+                  {
+                    "name": "protocol_Details",
+                    "type": "core::byte_array::ByteArray"
+                  }
+                ],
+                "outputs": [],
+                "state_mutability": "external"
+              },
+              {
+                "type": "function",
+                "name": "is_campaign_member",
+                "inputs": [
+                  {
+                    "name": "campaign_user",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  },
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "(core::bool, weaver_contract::mods::types::CampaignMembers)"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_protocol",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "weaver_contract::mods::types::ProtocolDetails"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_protocol_matadata_uri",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "core::byte_array::ByteArray"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_protocol_campaign_users",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "core::integer::u256"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_registered_protocol",
+                "inputs": [
+                  {
+                    "name": "protocol_owner",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "weaver_contract::mods::types::ProtocolInfo"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_protocol_nft_class_hash",
+                "inputs": [],
+                "outputs": [
+                  {
+                    "type": "core::starknet::class_hash::ClassHash"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_all_protocol_details",
+                "inputs": [],
+                "outputs": [
+                  {
+                    "type": "core::array::Array::\u003cweaver_contract::mods::types::ProtocolDetails\u003e"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_all_campaign_for_members",
+                "inputs": [
+                  {
+                    "name": "user",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "core::array::Array::\u003cweaver_contract::mods::types::CampaignMembers\u003e"
+                  }
+                ],
+                "state_mutability": "view"
+              },
+              {
+                "type": "function",
+                "name": "get_campaign_for_member",
+                "inputs": [
+                  {
+                    "name": "protocol_id",
+                    "type": "core::integer::u256"
+                  },
+                  {
+                    "name": "user",
+                    "type": "core::starknet::contract_address::ContractAddress"
+                  }
+                ],
+                "outputs": [
+                  {
+                    "type": "weaver_contract::mods::types::CampaignMembers"
+                  }
+                ],
+                "state_mutability": "view"
+              }
+            ]
+          },
+          {
+            "type": "constructor",
+            "name": "constructor",
+            "inputs": [
+              {
+                "name": "protocol_nft_classhash",
+                "type": "core::felt252"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::ProtocolCampaign",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256",
+                "kind": "data"
+              },
+              {
+                "name": "protocol_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "protocol_nft_address",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "block_timestamp",
+                "type": "core::integer::u64",
+                "kind": "data"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::JoinProtocolCampaign",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256",
+                "kind": "data"
+              },
+              {
+                "name": "caller",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "token_id",
+                "type": "core::integer::u256",
+                "kind": "data"
+              },
+              {
+                "name": "user",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "block_timestamp",
+                "type": "core::integer::u64",
+                "kind": "data"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::DeployProtocolNft",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256",
+                "kind": "data"
+              },
+              {
+                "name": "protocol_nft",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "block_timestamp",
+                "type": "core::integer::u64",
+                "kind": "data"
+              }
+            ]
+          },
+          {
+            "type": "enum",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::UserEventType",
+            "variants": [
+              {
+                "name": "Register",
+                "type": "()"
+              },
+              {
+                "name": "Verify",
+                "type": "()"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::ProtocolRegistered",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "protocol_id",
+                "type": "core::integer::u256",
+                "kind": "data"
+              },
+              {
+                "name": "protocol_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "data"
+              },
+              {
+                "name": "event_type",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::UserEventType",
+                "kind": "data"
+              },
+              {
+                "name": "block_timestamp",
+                "type": "core::integer::u64",
+                "kind": "data"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::Event",
+            "kind": "enum",
+            "variants": [
+              {
+                "name": "ProtocolCampaign",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::ProtocolCampaign",
+                "kind": "nested"
+              },
+              {
+                "name": "JoinProtocolCampaign",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::JoinProtocolCampaign",
+                "kind": "nested"
+              },
+              {
+                "name": "DeployProtocolNft",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::DeployProtocolNft",
+                "kind": "nested"
+              },
+              {
+                "name": "ProtocolRegistered",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::ProtocolRegistered",
+                "kind": "nested"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "openzeppelin_access::ownable::ownable::OwnableComponent::OwnershipTransferred",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "previous_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "key"
+              },
+              {
+                "name": "new_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "key"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "openzeppelin_access::ownable::ownable::OwnableComponent::OwnershipTransferStarted",
+            "kind": "struct",
+            "members": [
+              {
+                "name": "previous_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "key"
+              },
+              {
+                "name": "new_owner",
+                "type": "core::starknet::contract_address::ContractAddress",
+                "kind": "key"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "openzeppelin_access::ownable::ownable::OwnableComponent::Event",
+            "kind": "enum",
+            "variants": [
+              {
+                "name": "OwnershipTransferred",
+                "type": "openzeppelin_access::ownable::ownable::OwnableComponent::OwnershipTransferred",
+                "kind": "nested"
+              },
+              {
+                "name": "OwnershipTransferStarted",
+                "type": "openzeppelin_access::ownable::ownable::OwnableComponent::OwnershipTransferStarted",
+                "kind": "nested"
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "name": "weaver_contract::mods::protocol::protocols::protocols::Event",
+            "kind": "enum",
+            "variants": [
+              {
+                "name": "ProtocolEvent",
+                "type": "weaver_contract::mods::protocol::protocolcomponent::ProtocolCampaign::Event",
+                "kind": "flat"
+              },
+              {
+                "name": "OwnableEvent",
+                "type": "openzeppelin_access::ownable::ownable::OwnableComponent::Event",
+                "kind": "flat"
+              }
+            ]
+          }
+        ],
+        "Abi": {}
+      }
+    ],
+    "confirmEnoughContracts": true
+  }
+}
