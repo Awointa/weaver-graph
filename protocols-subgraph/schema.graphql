@@ -1,3 +1,45 @@
-type MyEntity @entity {
-    id: ID!
+type ProtocolCampaign @entity(immutable: true) {
+  id: Bytes!
+  protocolId: BigInt!
+  protocolOwner: String!
+  protocolNftAddress: String!
+  blockTimestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type JoinProtocolCampaign @entity(immutable: true) {
+  id: Bytes!
+  protocolId: BigInt!
+  caller: String!
+  tokenId: BigInt!
+  user: String!
+  blockTimestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+type DeployProtocolNft @entity(immutable: true) {
+  id: Bytes!
+  protocolId: BigInt!
+  protocolNft: String!
+  blockTimestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
+
+enum UserEventType {
+  Register
+  Verify
+}
+
+type ProtocolRegistered @entity(immutable: true) {
+  id: Bytes!
+  protocolId: BigInt!
+  protocolOwner: String!
+  eventType: UserEventType!
+  blockTimestamp: BigInt!
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
 }
