@@ -1,0 +1,21 @@
+enum UserEventType {
+  Register
+}
+
+type Upgraded @entity(immutable: true) {
+  id: Bytes!
+  implementation: String! 
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserRegistered @entity(immutable: true) {
+  id: Bytes!
+  userId: BigInt! 
+  user: String!    
+  eventType: UserEventType!
+  blockTimestamp: BigInt! 
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
